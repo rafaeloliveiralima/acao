@@ -748,14 +748,14 @@ li.lifooter a:hover:not(.active) {
 			var params = "id="+id;
             var resultado = 0;
             var xmlhttp = new XMLHttpRequest();
-			alert('3');
+			//alert('3');
             xmlhttp.open("GET","http://tempustecnologia.com/acoes/getlotejson.php?"+params,true);
             xmlhttp.onload = function ()
 			{
                 if (xmlhttp.status==200)
                 {
-					alert(xmlhttp.status);
-					alert(this.responseText);
+					//alert(xmlhttp.status);
+					//alert(this.responseText);
 					var myObj = JSON.parse(this.responseText);
 					
 					document.getElementById("cmboxempresa2").value= myObj.idempresa;
@@ -805,7 +805,7 @@ li.lifooter a:hover:not(.active) {
                 }
             };
             xmlhttp.send();
-			alert('4');
+			//alert('4');
             return resultado; 
 								
 		}
@@ -951,7 +951,7 @@ li.lifooter a:hover:not(.active) {
                 xmlhttp.open("GET","http://tempustecnologia.com/acoes/testaloginapp.php?"+params,false);
 				//xmlhttp.setRequestHeader( 'Access-Control-Allow-Origin', '*');
 				xmlhttp.onload = function (){
-					alert(xmlhttp.status);
+					//alert(xmlhttp.status);
 					if (xmlhttp.status==200)
                         {
 						    var str = xmlhttp.responseText;
