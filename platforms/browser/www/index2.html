@@ -198,7 +198,7 @@ li.lifooter a:hover:not(.active) {
 		  </button>
 -->
 		  	
-<a class="navbar-brand" href="index2.html">Ações 0.1</a>
+<a class="navbar-brand" href="index2.html">Ações 0.2</a>
 		  <span id="div_dadoslogin" ></span>
 
 		</div>
@@ -208,7 +208,7 @@ li.lifooter a:hover:not(.active) {
 			  <li class='hidden'><a data-toggle="pill" href="#novochamado" >Novo Lote</a></li>
 			  <li><a onclick='novochamado()'>Novo Lote</a></li>
 			  <!--<li><a onclick='meuschamados()'>Meus Lotes</a></li>-->
-			  <li><a onclick='carregaatendimento(0,0)'>Consulta Lote</a></li>
+			  <li><a onclick='carregaatendimento(0,0,0)'>Consulta Lote</a></li>
 			  <li class='hidden'><a data-toggle="pill" href="#conschamado">Cons. Chamado</a></li>
 			  <li class='hidden'><a data-toggle="pill" href="#consatendimento">Cons. Atendimento</a></li>
 			  <li class='hidden'><a data-toggle="pill" href="#consatendimentofiltro">Cons. Atendimento</a></li>
@@ -233,10 +233,37 @@ li.lifooter a:hover:not(.active) {
 
 		<div id="consatendimentofiltro" class="tab-pane fade">
 			<div class="container">
-			<label class="radio-inline"><input type="radio" name="optradio" value="A"  onchange = 'carregaatendimento(0,this.value)'>Aberto</label>
-			<label class="radio-inline"><input type="radio" name="optradio" value="7" onchange = 'carregaatendimento(0,this.value)'>7 dias</label>
-			<label class="radio-inline"><input type="radio" name="optradio" value="15" onchange = 'carregaatendimento(0,this.value)' >15 dias</label>
-			<label class="radio-inline"><input type="radio" name="optradio" value="30"  onchange = 'carregaatendimento(0,this.value)' >30 dias</label>
+			<div class="form-group">
+				<label for="cmboxempresa">Solicitante</label>
+				<select name="cmboxempresa3" id="cmboxempresa3" onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)" class="form-control input-sm">
+				<option value="">Selecione o Empresa</option>
+				<option value="10">AZUL4F (AZUL) </option>
+				<option value="1">BBAS3F (BANCO DO BRASIL) </option>
+				<option value="9">BRFS3F (BRF) </option>
+				<option value="4">CIEL3F (CIELO) </option>
+				<option value="20">CPLE6F (COPEL) </option>
+				<option value="16">ELET3F (ELETROBRAS) </option>
+				<option value="6">EMBR3F (EMBRAER) </option>
+				<option value="19">ESTC3F (ESTÁCIO PARCIPAÇÕES) </option>
+				<option value="15">FLRY3F (FLEURY) </option>
+				<option value="11">GOLL4F (GOL) </option>
+				<option value="7">GRND3 (GRANDENE) </option>
+				<option value="13">KLBN11F (KLABIN) </option>
+				<option value="3">LIGT3F (LiGHT) </option>
+				<option value="5">NATU3F (NATURA) </option>
+				<option value="8">PETR4F (PETROBRAS) </option>
+				<option value="12">QUAL3F (QUALICORP) </option>
+				<option value="21">RADL3F (Drogaria Raia) </option>
+				<option value="22">SMLS3F (SMILE FIDELIDADE) </option>
+				<option value="14">SUZB3F (SUZANO) </option>
+				<option value="2">UGPA3F (ULTRAPAR) </option>
+				<option value="17">VVAR11F (VIA VAREJO) </option>
+				</select>
+			</div>
+			<label class="radio-inline"><input type="radio" name="optradio" value="A"  onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)">Aberto</label>
+			<label class="radio-inline"><input type="radio" name="optradio" value="7" onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)">7 dias</label>
+			<label class="radio-inline"><input type="radio" name="optradio" value="15" onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)" >15 dias</label>
+			<label class="radio-inline"><input type="radio" name="optradio" value="30"  onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)" >30 dias</label>
 
 			</div>
 			<div class="container" id='chamadosfiltro'>
@@ -557,7 +584,7 @@ li.lifooter a:hover:not(.active) {
 		// 15 dias
 		// 30 dias
 		
-		function carregaatendimento(id,filtro) 
+		function carregaatendimento(id,filtro,idempresa) 
 		{
 
 		// se for passado o id de numero de chamado
@@ -576,7 +603,7 @@ li.lifooter a:hover:not(.active) {
 			   {
 				$('#myNavbar a[href="#consatendimentofiltro"]').tab('show');
 				//alert(filtro);
-				getChamados(idusuario,filtro);
+				getChamados(idusuario,filtro,idempresa);
 			   }
 			   else
 			   {
@@ -665,7 +692,7 @@ li.lifooter a:hover:not(.active) {
 								);
 								//alert('Não foi possível alterar o chamado');
 							
-								carregaatendimento(idchamado,0);
+								carregaatendimento(idchamado,0,'');
 							}
                         }
                     else if (xmlhttp.status == 404) {
@@ -723,7 +750,7 @@ li.lifooter a:hover:not(.active) {
                     if (xmlhttp.status==200)
                         {
         					resultado = xmlhttp.responseText;
-							carregaatendimento(resultado,0);
+							carregaatendimento(resultado,0,'');
                         }
                     else if (xmlhttp.status == 404) {
                         alert("Web Service doesn't work");
@@ -810,9 +837,9 @@ li.lifooter a:hover:not(.active) {
 								
 		}
 	 
-		function getChamados(id,filtro)
+		function getChamados(id,filtro,idempresa)
 		{
-         var params = "idusuario="+id+"&filtro="+filtro;
+         var params = "idempresa="+idempresa+"&idusuario="+id+"&filtro="+filtro;
                 var resultado = 0;
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.open("GET","http://tempustecnologia.com/acoes/getlote.php?"+params,true);
@@ -911,7 +938,7 @@ li.lifooter a:hover:not(.active) {
                         {
         					resultado = xmlhttp.responseText;
 							//alert(resultado);
-							carregaatendimento(0,0);
+							carregaatendimento(0,0,'');
 							//carregaatendimento(resultado,0);
                         }
                     else if (xmlhttp.status == 404) {
