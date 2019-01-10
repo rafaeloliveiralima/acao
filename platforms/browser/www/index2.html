@@ -205,8 +205,8 @@ li.lifooter a:hover:not(.active) {
 		<div class="collapse navbar-collapse" id="myNavbar">	
 			<ul class="nav navbar-nav">
 			  <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-			  <li class='hidden'><a data-toggle="pill" href="#novochamado" >Novo Lote</a></li>
-			  <li><a onclick='novochamado()'>Novo Lote</a></li>
+			  <li class='hidden'><a data-toggle="pill" href="#novolote" >Novo Lote</a></li>
+			  <li><a onclick='novolote()'>Novo Lote</a></li>
 			  <!--<li><a onclick='meuschamados()'>Meus Lotes</a></li>-->
 			  <li><a onclick='carregaatendimento(0,0,0)'>Consulta Lote</a></li>
 			  <li class='hidden'><a data-toggle="pill" href="#conschamado">Cons. Chamado</a></li>
@@ -279,7 +279,7 @@ li.lifooter a:hover:not(.active) {
 			</div>
 		</div>
 	
-		<div id="novochamado" class="tab-pane fade">
+		<div id="novolote" class="tab-pane fade">
 		  <form name='frmchamado' id='frmchamado' method='post'>
 			<div class="container">
 				<h3>Novo Lote</h3>
@@ -321,7 +321,7 @@ li.lifooter a:hover:not(.active) {
 				</div>
 				<div class="form-group">
 					<label for="edtdatacompra">Data Compra:</label>
-					<input type="text" class="form-control input-sm" id="edtdatacompra" name="edtdatacompra">
+					<input type="text" class="form-control input-sm" id="edtdatacompra" name="edtdatacompra" value="">
 				</div>
 				<div class="form-group">
 					<label for="edtvalorcompra">Valor Compra:</label>
@@ -331,15 +331,7 @@ li.lifooter a:hover:not(.active) {
 					<label for="edtquantidade">Quantidade:</label>
 					<input type="text" class="form-control input-sm" id="edtquantidade" name="edtquantidade">
 				</div>
-				<div class="form-group">
-					<label for="edtdatavenda">Data Venda:</label>
-					<input type="text" class="form-control input-sm" id="edtdatavenda" name="edtdatavenda">
-				</div>
-				<div class="form-group">
-					<label for="edtvalorvenda">Valor Venda:</label>
-					<input type="text" class="form-control input-sm" id="edtvalorvenda" name="edtvalorvenda">
-				</div>
-				<button type="button" class="btn btn-success btn-block" onclick="salvarChamado()">Salvar</button>
+				<button type="button" class="btn btn-success btn-block" onclick="salvarLote()">Salvar</button>
 			</div>
 			
 			</form>
@@ -563,7 +555,7 @@ li.lifooter a:hover:not(.active) {
 		}
 		
 		
-		function novochamado()
+		function novolote()
 		{
 			
 			var idusuario = window.localStorage.getItem("idusuario");
@@ -573,14 +565,18 @@ li.lifooter a:hover:not(.active) {
 			}
 			else
 			{
-				$('#myNavbar a[href="#novochamado"]').tab('show');
+				$('#myNavbar a[href="#novolote"]').tab('show');
 				//document.getElementById('edtsolicitante').value=window.localStorage.getItem('uname');
 				document.getElementById('cmboxempresa').value='';
 				document.getElementById('edtvalorcompra').value='';
 				document.getElementById('edtdatacompra').value='';
-				document.getElementById('edtvalorvenda').value='3';
-				document.getElementById('edtdatavenda').value='';
 				$(".botao").removeAttr("disabled");
+				var date = new Date();
+				var day = date.getDate();
+				var monthIndex = date.getMonth();
+				var year = date.getFullYear();
+				document.getElementById("edtdatacompra").value = day + '/' + monthIndex+1 + '/' + year;
+
 			}
 		
 		
@@ -737,13 +733,15 @@ li.lifooter a:hover:not(.active) {
      }		 
 		 
 		
-		function salvarChamado()
+		function salvarLote()
 		{
-			if ((document.getElementById('edtsolicitante').value=='') ||
-			(document.getElementById('edtlocal').value=='') )
+			if ((document.getElementById('edtvalorcompra').value=='') ||
+			(document.getElementById('edtdatacompra').value=='') ||
+			(document.getElementById('edtquantidade').value=='') ||
+			(document.getElementById('cmboxempresa').value=='') )
 			{
 				navigator.notification.alert(
-									'Verifique o preenchimento dos campos Solicitante, local e descrição.',  // message
+									'Verifique o preenchimento dos campos.',  // message
 									alertDismissed,         // callback
 									'Atenção',            // title
 									'OK'                  // buttonName
@@ -761,23 +759,26 @@ li.lifooter a:hover:not(.active) {
 			}
 			else
 			{
-				var solicitante = document.getElementById('edtsolicitante').value;
-				var local = document.getElementById('edtlocal').value;
-				var animal = document.getElementById('edtanimal').value;
-				var descricao = document.getElementById('edtdescricao').value;
-				var idsituacaoanimal = document.getElementById('cmboxsituacaoanimal').value;
 				var codusuario = window.localStorage.getItem("idusuario");
 
-				var params = "op=I&codusuario="+codusuario+"&idsituacaoanimal="+idsituacaoanimal+"&solicitante="+solicitante+"&local="+local+"&animal="+animal+"&descricao="+descricao;
-                var resultado = 0;
+				var quantidade = document.getElementById('edtquantidade').value;
+				var valor = document.getElementById('edtvalorcompra').value;
+				var datacompra = document.getElementById('edtdatacompra').value;
+				var idempresa = document.getElementById('cmboxempresa').value;
+
+				var params = "op=I&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&cmboxempresa="+idempresa+"&codusuario="+codusuario;
+                //alert(params);
+				var resultado = 0;
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET","http://tempustecnologia.com/acoes/exec.chamado.php?"+params,false);
+                xmlhttp.open("GET","http://tempustecnologia.com/acoes/exec.lote.php?"+params,false);
 		
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200)
                         {
         					resultado = xmlhttp.responseText;
-							carregaatendimento(resultado,0,'');
+							//alert(resultado);
+							//novolote();
+							carregaatendimento(0,0,0);
                         }
                     else if (xmlhttp.status == 404) {
                         alert("Web Service doesn't work");
