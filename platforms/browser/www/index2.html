@@ -79,7 +79,7 @@ li.lifooter a:hover:not(.active) {
 }
 </style>
 	
-    <title>Arboreto JBRJ</title>
+    <title>Ações</title>
 	
 	<script>
 		 function pegaImagens(id)
@@ -126,7 +126,12 @@ li.lifooter a:hover:not(.active) {
         </div>
         <div class="modal-body">
           <div class="form-group">
-			<label for="email">Sistema desenvolvido Por Rafael Lima</label>
+			<label for="email">Tempus Tecnologia LTDA<br>
+			</label>
+			<label for="email">Desenvolvedor: Rafael Lima<br>
+			</label>
+			<label for="email">21 980327479<br>
+			</label>
 		  </div>
         </div>
         <div class="modal-footer">
@@ -198,7 +203,7 @@ li.lifooter a:hover:not(.active) {
 		  </button>
 -->
 		  	
-<a class="navbar-brand" href="index2.html">Ações 1.0</a>
+<a class="navbar-brand" href="index2.html">Ações 1.2</a>
 		  <span id="div_dadoslogin" ></span>
 
 		</div>
@@ -252,6 +257,7 @@ li.lifooter a:hover:not(.active) {
 <option value="11">GOLL4F(GOL)</option>
 <option value="7">GRND3(GRANDENE)</option>
 <option value="13">KLBN11F(KLABIN)</option>
+<option value="34">KROT3F(KROTON EDUCACIONAL)</option>
 <option value="3">LIGT3F(LiGHT)</option>
 <option value="31">LREN3F(Lojas Renner SA)</option>
 <option value="28">MRVE3F(MRV)</option>
@@ -260,6 +266,7 @@ li.lifooter a:hover:not(.active) {
 <option value="8">PETR4F(PETROBRAS)</option>
 <option value="12">QUAL3F(QUALICORP)</option>
 <option value="21">RADL3F(Drogaria Raia)</option>
+<option value="33">RENT3F(LOCALIZA)</option>
 <option value="22">SMLS3F(SMILE FIDELIDADE)</option>
 <option value="14">SUZB3F(SUZANO)</option>
 <option value="24">TIMP3F(TIM PARTICIPAÇÕES)</option>
@@ -267,6 +274,8 @@ li.lifooter a:hover:not(.active) {
 <option value="25">VALE3F(VALE)</option>
 <option value="17">VVAR11F(VIA VAREJO)</option>
 <option value="29">VVAR3F(VIA VAREJO)</option>
+
+
 				</select>
 			</div>
 			<label class="radio-inline"><input type="radio" name="optradio" value="A"  onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)">Aberto</label>
@@ -284,6 +293,14 @@ li.lifooter a:hover:not(.active) {
 			<div class="container">
 				<h3>Novo Lote</h3>
 				<div class="form-group">
+					<label for="cmboxcorretora">Corretora</label>
+					<select name="cmboxcorretora" id="cmboxcorretora" class="form-control input-sm">
+					<option value="">Selecione a corretora</option>
+					<option value="1">MODAL</option>
+					<option value="2">CLEAR</option>
+					</select>
+
+
 					<label for="cmboxempresa">Empresa</label>
 					<select name="cmboxempresa" id="cmboxempresa" class="form-control input-sm">
 					<option value="">Selecione o Empresa</option>
@@ -302,6 +319,7 @@ li.lifooter a:hover:not(.active) {
 <option value="11">GOLL4F(GOL)</option>
 <option value="7">GRND3(GRANDENE)</option>
 <option value="13">KLBN11F(KLABIN)</option>
+<option value="34">KROT3F(KROTON EDUCACIONAL)</option>
 <option value="3">LIGT3F(LiGHT)</option>
 <option value="31">LREN3F(Lojas Renner SA)</option>
 <option value="28">MRVE3F(MRV)</option>
@@ -310,6 +328,7 @@ li.lifooter a:hover:not(.active) {
 <option value="8">PETR4F(PETROBRAS)</option>
 <option value="12">QUAL3F(QUALICORP)</option>
 <option value="21">RADL3F(Drogaria Raia)</option>
+<option value="33">RENT3F(LOCALIZA)</option>
 <option value="22">SMLS3F(SMILE FIDELIDADE)</option>
 <option value="14">SUZB3F(SUZANO)</option>
 <option value="24">TIMP3F(TIM PARTICIPAÇÕES)</option>
@@ -348,7 +367,14 @@ li.lifooter a:hover:not(.active) {
 				</div>
 				</div>
 <div class="form-group">
-					<label for="cmboxempresa">Solicitante</label>
+					<label for="cmboxcorretora2">Corretora</label>
+					<select name="cmboxcorretora2" id="cmboxcorretora2" class="form-control input-sm">
+					<option value="">Selecione a corretora</option>
+					<option value="1">MODAL</option>
+					<option value="2">CLEAR</option>
+					</select>
+					
+					<label for="cmboxempresa2">Empresa</label>
 					<select name="cmboxempresa2" id="cmboxempresa2" class="form-control input-sm">
 					<option value="">Selecione o Empresa</option>
 					<option value="23">ABEV3F(AMBEV SA)</option>
@@ -567,9 +593,11 @@ li.lifooter a:hover:not(.active) {
 			{
 				$('#myNavbar a[href="#novolote"]').tab('show');
 				//document.getElementById('edtsolicitante').value=window.localStorage.getItem('uname');
+				document.getElementById('cmboxcorretora').value='';
 				document.getElementById('cmboxempresa').value='';
 				document.getElementById('edtvalorcompra').value='';
 				document.getElementById('edtdatacompra').value='';
+				document.getElementById('edtquantidade').value='';
 				$(".botao").removeAttr("disabled");
 				var date = new Date();
 				var day = date.getDate();
@@ -655,9 +683,12 @@ li.lifooter a:hover:not(.active) {
 
 		function alterarChamado()
 		{
-			if ((document.getElementById('edtsolicitante2').value=='') ||
-			(document.getElementById('edtlocal2').value=='') ||
-			(document.getElementById('edtdescricao2').value==''))
+		
+			if ((document.getElementById('edtvalorcompra2').value=='') ||
+			(document.getElementById('edtdatacompra2').value=='') ||
+			(document.getElementById('edtquantidade2').value=='') ||
+			(document.getElementById('cmboxcorretora2').value=='') ||
+			(document.getElementById('cmboxempresa2').value=='') )
 			{
 			   navigator.notification.alert(
 									'Verifique o preenchimento dos campos!',  // message
@@ -676,25 +707,29 @@ li.lifooter a:hover:not(.active) {
 			}
 			else
 			{
-				var solicitante = document.getElementById('edtsolicitante2').value;
-				var local = document.getElementById('edtlocal2').value;
-				var animal = document.getElementById('edtanimal2').value;
-				var idsituacaoanimal = document.getElementById('cmboxsituacaoanimal2').value;
-				var descricao = document.getElementById('edtdescricao2').value;
 				var codusuario = window.localStorage.getItem("idusuario");
-				var idchamado = document.getElementById('edtID').value;
-				//alert(codusuario);
-				var params = "op=A&id="+idchamado+"&codusuario="+codusuario+"&idsituacaoanimal="+idsituacaoanimal+"&solicitante="+solicitante+"&local="+local+"&animal="+animal+"&descricao="+descricao;
+
+				var idlote = document.getElementById('edtID').value;
+				var quantidade = document.getElementById('edtquantidade2').value;
+				var valor = document.getElementById('edtvalorcompra2').value;
+				var datacompra = document.getElementById('edtdatacompra2').value;
+				var idempresa = document.getElementById('cmboxempresa2').value;
+				var idcorretora = document.getElementById('cmboxcorretora2').value;
+				var datavenda = document.getElementById('edtdatavenda2').value;
+				var valorvenda = document.getElementById('edtvalorvenda2').value;
+				
+				var params = "op=A&id="+idlote+"&edtdatavenda="+datavenda+"&edtvalorvenda="+valorvenda+"&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&cmboxempresa="+idempresa+"&cmboxcorretora="+idcorretora+"&codusuario="+codusuario;
                 var resultado = 0;
                 var xmlhttp = new XMLHttpRequest();
         		
-                xmlhttp.open("GET","http://tempustecnologia.com/acoes/exec.chamado.php?"+params,true);
+                xmlhttp.open("GET","http://tempustecnologia.com/acoes/exec.lote.php?"+params,false);
 		
                 xmlhttp.onload = function (){
-					//alert(xmlhttp.status);
+					alert(xmlhttp.status);
                     if (xmlhttp.status==200)
                         {
 							resultado = xmlhttp.responseText;
+							alert(resultado);
 							if (resultado==true)
 							{	
 								navigator.notification.alert(
@@ -705,18 +740,20 @@ li.lifooter a:hover:not(.active) {
 								);
 							    // alert('Alterado com sucesso');
 							}
-							else
+							/*else
 							{
 							navigator.notification.alert(
-									'Não foi possível alterar o chamado!',  // message
+									'Não foi possível alterar o lote!',  // message
 									alertDismissed,         // callback
 									'Atenção',            // title
 									'OK'                  // buttonName
 								);
 								//alert('Não foi possível alterar o chamado');
 							
-								carregaatendimento(idchamado,0,'');
+								carregaatendimento(0,0,0);
 							}
+							*/
+							carregaatendimento(0,0,0);
                         }
                     else if (xmlhttp.status == 404) {
                         alert("Web Service doesn't work");
@@ -738,6 +775,7 @@ li.lifooter a:hover:not(.active) {
 			if ((document.getElementById('edtvalorcompra').value=='') ||
 			(document.getElementById('edtdatacompra').value=='') ||
 			(document.getElementById('edtquantidade').value=='') ||
+			(document.getElementById('cmboxcorretora').value=='') ||
 			(document.getElementById('cmboxempresa').value=='') )
 			{
 				navigator.notification.alert(
@@ -765,8 +803,9 @@ li.lifooter a:hover:not(.active) {
 				var valor = document.getElementById('edtvalorcompra').value;
 				var datacompra = document.getElementById('edtdatacompra').value;
 				var idempresa = document.getElementById('cmboxempresa').value;
+				var idcorretora = document.getElementById('cmboxcorretora').value;
 
-				var params = "op=I&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&cmboxempresa="+idempresa+"&codusuario="+codusuario;
+				var params = "op=I&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&cmboxempresa="+idempresa+"&cmboxcorretora="+idcorretora+"&codusuario="+codusuario;
                 //alert(params);
 				var resultado = 0;
                 var xmlhttp = new XMLHttpRequest();
@@ -813,11 +852,35 @@ li.lifooter a:hover:not(.active) {
 					//alert(this.responseText);
 					var myObj = JSON.parse(this.responseText);
 					
+					document.getElementById("cmboxcorretora2").value= myObj.idcorretora;
 					document.getElementById("cmboxempresa2").value= myObj.idempresa;
-					document.getElementById("edtdatacompra2").value = myObj.datacompra;
+					var str = myObj.datacompra; 
+					   var ano = str.substr(0, 4);
+					   var mes = str.substr(5, 2);
+					   var dia = str.substr(8, 2);
+
+					
+					document.getElementById("edtdatacompra2").value =  dia + '/'+mes+'/'+ano;// myObj.datacompra;
+					
+					
 					document.getElementById("edtvalorcompra2").value = myObj.valorcompra;
-					document.getElementById("quantidade2").value = myObj.quantidade;
+					document.getElementById("edtquantidade2").value = myObj.quantidade;
 					document.getElementById('edtdatavenda2').value=myObj.datavenda;
+					
+					var str = myObj.datavenda; 
+					if (str.length>2)
+					{
+					   var ano = str.substr(0, 4);
+					   var mes = str.substr(5, 2);
+					   var dia = str.substr(8, 2);
+					   document.getElementById('edtdatavenda2').value=dia + '/'+mes+'/'+ano;
+					}
+					else
+					{
+						document.getElementById('edtdatavenda2').value = '';
+					}
+
+					
 					document.getElementById("edtvalorvenda2").value= myObj.valorvenda;
 							
 							//document.getElementById("edtdata").value= myObj.data;
