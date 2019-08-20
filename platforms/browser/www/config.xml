@@ -6,12 +6,12 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>Ação</name>
+    <name>Bolão</name>
     <description>
-        Aplicativo consulta e administração de lotes de ações da BMF.
+        Aplicativo consulta o saldo no Bolão.
     </description>
     <author email="rafaeloliveiralima@ibest.com.br" href="http://www.tempustecnologia.com">
-        AÇÕES
+        Bolão Megasena
     </author>
     <content src="index.html" />
     <access origin="*" />

@@ -1,11 +1,11 @@
 <?xml version='1.2' encoding='utf-8'?>
 <widget id="br.gov.jbrj.acao" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Ação</name>
+    <name>Bolão</name>
     <description>
-        Aplicativo consulta e administração de lotes de ações da BMF.
+        Aplicativo consulta o saldo no Bolão.
     </description>
     <author email="rafaeloliveiralima@ibest.com.br" href="http://www.tempustecnologia.com">
-        AÇÕES
+        Bolão Megasena
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
