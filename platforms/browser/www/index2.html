@@ -126,11 +126,17 @@ li.lifooter a:hover:not(.active) {
         </div>
         <div class="modal-body">
           <div class="form-group">
-			<label for="email">Tempus Tecnologia LTDA<br>
+			<label for="email">Conta para depósito<br>
 			</label>
-			<label for="email">Desenvolvedor: Rafael Lima<br>
+			<label for="email">Banco 001 - Banco do Brasil<br>
 			</label>
-			<label for="email">21 980327479<br>
+			<label for="email">Agencia 1572-5<br>
+			</label>
+			<label for="email">Conta: 9.058-1<br>
+			</label>
+			<label for="email">Rafael Oliveira Lima<br>
+			</label>
+			<label for="email">CPF: 038817487-09<br>
 			</label>
 		  </div>
         </div>
@@ -142,37 +148,6 @@ li.lifooter a:hover:not(.active) {
 	</div>
 
 
- <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Atendimento</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-			<label for="email">Descrição:</label>
-			<textarea class="form-control" rows="3" id="edtatendimento"></textarea>
-		  </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-			<label for="email">Situação:</label>
-			  <select name='cmboxsituacao' id='cmboxsituacao' class="form-control">
-				<option value='1'>Aberto </option>
-				<option value='2'>Em atendimento </option>
-				<option value='3'>Fechado </option>
-			  </select>
-		  </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" onclick="alterarAtendimento(document.getElementById('edtID').value,document.getElementById('edtatendimento').value,document.getElementById('cmboxsituacao').value)" class="btn btn-sm btn-success" data-dismiss="modal">Salvar</button>
-          <button type="button" onclick="excluirChamado(document.getElementById('edtID').value)" class="btn btn-sm btn-danger" data-dismiss="modal">Excluir chamado</button>
-          <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Fechar</button>
-        </div>
-      </div>
-	 </div>
-	</div>
 
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -184,40 +159,22 @@ li.lifooter a:hover:not(.active) {
 			<span class="icon-bar"></span>	
 		  </button>
 		  
-		  <!--<button type="button" class="navbar-toggle" data-toggle="pill" href="#login">
-			<span class="glyphicon glyphicon-user"></span> 
-		  </button>
-		  -->
 
-<!--		  <button type="button" class="navbar-toggle" data-toggle="pill" onclick='novochamado()'>
-			<span class="glyphicon glyphicon-eye-open"></span> 
-		  </button>
-
-   	      <button type="button" class="navbar-toggle" data-toggle="pill" onclick='carregaatendimento(0)'>
-			<span class="glyphicon glyphicon-alert"></span> 
-		  </button>
-
-
-		   <button type="button" class="navbar-toggle" data-toggle="pill" onclick='meuschamados()'>
-			<span class="glyphicon glyphicon-warning-sign"></span> 
-		  </button>
--->
-		  	
-<a class="navbar-brand" href="index2.html">Ações 1.2</a>
+<a class="navbar-brand" href="index2.html">Bolão 0.1</a>
 		  <span id="div_dadoslogin" ></span>
 
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">	
 			<ul class="nav navbar-nav">
 			  <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-			  <li class='hidden'><a data-toggle="pill" href="#novolote" >Novo Lote</a></li>
-			  <li><a onclick='novolote()'>Novo Lote</a></li>
+			  <li class='hidden'><a data-toggle="pill" href="#novoconcurso" >Novo Concurso</a></li>
+			  <li><a onclick='novoconcurso()'>Cadastro Concurso</a></li>
 			  <!--<li><a onclick='meuschamados()'>Meus Lotes</a></li>-->
-			  <li><a onclick='carregaatendimento(0,0,0)'>Consulta Lote</a></li>
-			  <li class='hidden'><a data-toggle="pill" href="#conschamado">Cons. Chamado</a></li>
+			  <li><a onclick='carregaatendimento()'>Consulta Extrato</a></li>
+			  <li class=""><a data-toggle="pill" href="#myModalSobre">Conta para depósito</a></li>
+			  <li><a onclick=''>Enviar SMS Cobrança</a></li>
 			  <li class='hidden'><a data-toggle="pill" href="#consatendimento">Cons. Atendimento</a></li>
-			  <li class='hidden'><a data-toggle="pill" href="#consatendimentofiltro">Cons. Atendimento</a></li>
-			  <li class='hidden'><a data-toggle="pill" href="#mapa">Mapa Ocorrência</a></li>
+			  <li class='hidden'><a data-toggle="pill" href="#consextrato">Cons. Atendimento</a></li>
 			  <li><a data-toggle="pill" href="#trocarsenha"><span class="glyphicon glyphicon-log-in"></span> Trocar Senha</a></li>
 			  <li><a data-toggle="pill" href="#login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
 			  <li><a onclick='exitFromApp()'><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
@@ -236,202 +193,38 @@ li.lifooter a:hover:not(.active) {
 			</div>
 		</div>
 
-		<div id="consatendimentofiltro" class="tab-pane fade">
-			<div class="container">
-			<div class="form-group">
-				<label for="cmboxempresa">Empresa</label>
-				<select name="cmboxempresa3" id="cmboxempresa3" onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)" class="form-control input-sm">
-				<option value="">Selecione o Empresa</option>
-<option value="23">ABEV3F(AMBEV SA)</option>
-<option value="10">AZUL4F(AZUL)</option>
-<option value="1">BBAS3F(BANCO DO BRASIL)</option>
-<option value="9">BRFS3F(BRF)</option>
-<option value="4">CIEL3F(CIELO)</option>
-<option value="20">CPLE6F(COPEL)</option>
-<option value="32">CSNA3F(Companhia Siderurgica Nacional)</option>
-<option value="30">DMMO3F(DMMO)</option>
-<option value="16">ELET3F(ELETROBRAS)</option>
-<option value="6">EMBR3F(EMBRAER)</option>
-<option value="19">ESTC3F(ESTÁCIO PARCIPAÇÕES)</option>
-<option value="15">FLRY3F(FLEURY)</option>
-<option value="11">GOLL4F(GOL)</option>
-<option value="7">GRND3(GRANDENE)</option>
-<option value="13">KLBN11F(KLABIN)</option>
-<option value="34">KROT3F(KROTON EDUCACIONAL)</option>
-<option value="3">LIGT3F(LiGHT)</option>
-<option value="31">LREN3F(Lojas Renner SA)</option>
-<option value="28">MRVE3F(MRV)</option>
-<option value="5">NATU3F(NATURA)</option>
-<option value="27">OIBR3F(OI)</option>
-<option value="8">PETR4F(PETROBRAS)</option>
-<option value="12">QUAL3F(QUALICORP)</option>
-<option value="21">RADL3F(Drogaria Raia)</option>
-<option value="33">RENT3F(LOCALIZA)</option>
-<option value="22">SMLS3F(SMILE FIDELIDADE)</option>
-<option value="14">SUZB3F(SUZANO)</option>
-<option value="24">TIMP3F(TIM PARTICIPAÇÕES)</option>
-<option value="2">UGPA3F(ULTRAPAR)</option>
-<option value="25">VALE3F(VALE)</option>
-<option value="17">VVAR11F(VIA VAREJO)</option>
-<option value="29">VVAR3F(VIA VAREJO)</option>
-
-
-				</select>
-			</div>
-			<label class="radio-inline"><input type="radio" name="optradio" value="A"  onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)">Aberto</label>
-			<label class="radio-inline"><input type="radio" name="optradio" value="7" onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)">7 dias</label>
-			<label class="radio-inline"><input type="radio" name="optradio" value="15" onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)" >15 dias</label>
-			<label class="radio-inline"><input type="radio" name="optradio" value="30"  onchange = "carregaatendimento(0,this.value,document.getElementById('cmboxempresa3').value)" >30 dias</label>
-
-			</div>
-			<div class="container" id='chamadosfiltro'>
+		<div id="consextrato" class="tab-pane fade">
+			<div class="container" id='divextrato'>
 			</div>
 		</div>
 	
-		<div id="novolote" class="tab-pane fade">
+		<div id="novoconcurso" class="tab-pane fade">
 		  <form name='frmchamado' id='frmchamado' method='post'>
 			<div class="container">
-				<h3>Novo Lote</h3>
+				<h3>Concurso</h3>
 				<div class="form-group">
-					<label for="cmboxcorretora">Corretora</label>
-					<select name="cmboxcorretora" id="cmboxcorretora" class="form-control input-sm">
-					<option value="">Selecione a corretora</option>
-					<option value="1">MODAL</option>
-					<option value="2">CLEAR</option>
-					</select>
-
-
-					<label for="cmboxempresa">Empresa</label>
-					<select name="cmboxempresa" id="cmboxempresa" class="form-control input-sm">
-					<option value="">Selecione o Empresa</option>
-<option value="23">ABEV3F(AMBEV SA)</option>
-<option value="10">AZUL4F(AZUL)</option>
-<option value="1">BBAS3F(BANCO DO BRASIL)</option>
-<option value="9">BRFS3F(BRF)</option>
-<option value="4">CIEL3F(CIELO)</option>
-<option value="20">CPLE6F(COPEL)</option>
-<option value="32">CSNA3F(Companhia Siderurgica Nacional)</option>
-<option value="30">DMMO3F(DMMO)</option>
-<option value="16">ELET3F(ELETROBRAS)</option>
-<option value="6">EMBR3F(EMBRAER)</option>
-<option value="19">ESTC3F(ESTÁCIO PARCIPAÇÕES)</option>
-<option value="15">FLRY3F(FLEURY)</option>
-<option value="11">GOLL4F(GOL)</option>
-<option value="7">GRND3(GRANDENE)</option>
-<option value="13">KLBN11F(KLABIN)</option>
-<option value="34">KROT3F(KROTON EDUCACIONAL)</option>
-<option value="3">LIGT3F(LiGHT)</option>
-<option value="31">LREN3F(Lojas Renner SA)</option>
-<option value="28">MRVE3F(MRV)</option>
-<option value="5">NATU3F(NATURA)</option>
-<option value="27">OIBR3F(OI)</option>
-<option value="8">PETR4F(PETROBRAS)</option>
-<option value="12">QUAL3F(QUALICORP)</option>
-<option value="21">RADL3F(Drogaria Raia)</option>
-<option value="33">RENT3F(LOCALIZA)</option>
-<option value="22">SMLS3F(SMILE FIDELIDADE)</option>
-<option value="14">SUZB3F(SUZANO)</option>
-<option value="24">TIMP3F(TIM PARTICIPAÇÕES)</option>
-<option value="2">UGPA3F(ULTRAPAR)</option>
-<option value="25">VALE3F(VALE)</option>
-<option value="17">VVAR11F(VIA VAREJO)</option>
-<option value="29">VVAR3F(VIA VAREJO)</option>
-					</select>
+					<label for="edtdataconcurso">Data Concurso:</label>
+					<input type="text" class="form-control input-sm" id="edtdataconcurso" name="edtdataconcurso" value="">
 				</div>
 				<div class="form-group">
-					<label for="edtdatacompra">Data Compra:</label>
-					<input type="text" class="form-control input-sm" id="edtdatacompra" name="edtdatacompra" value="">
+					<label for="edtnumeroconcurso">Número Concurso Ref:</label>
+					<input type="text" class="form-control input-sm" id="edtnumeroconcurso" name="edtnumeroconcurso" value="">
 				</div>
 				<div class="form-group">
-					<label for="edtvalorcompra">Valor Compra:</label>
-					<input type="text" class="form-control input-sm" id="edtvalorcompra" name="edtvalorcompra">
+					<label for="edtvaloraposta">Valor Aposta:</label>
+					<input type="text" class="form-control input-sm" id="edtvaloraposta" name="edtvaloraposta">
 				</div>
 				<div class="form-group">
-					<label for="edtquantidade">Quantidade:</label>
+					<label for="edtquantidade">Quantidade participantes:</label>
 					<input type="text" class="form-control input-sm" id="edtquantidade" name="edtquantidade">
 				</div>
-				<button type="button" class="btn btn-success btn-block" onclick="salvarLote()">Salvar</button>
+				<button type="button" class="btn btn-success btn-block" onclick="salvarconcurso()">Salvar</button>
 			</div>
 			
 			</form>
 		</div>
 	
-		<div id="conschamado" class="tab-pane fade">
-			<div class="container" id="containerconschamado">
-				<h3>Consulta Chamado</h3>
-				<div class="form-group">
-					<label for="email">ID:</label>
-					<div class="input-group">
-						<input readonly type="text" class="form-control input-md" id="edtID">
-						<input type="hidden" class="form-control input-md" id="idsituacaochamado" value=''>
-				</div>
-				</div>
-<div class="form-group">
-					<label for="cmboxcorretora2">Corretora</label>
-					<select name="cmboxcorretora2" id="cmboxcorretora2" class="form-control input-sm">
-					<option value="">Selecione a corretora</option>
-					<option value="1">MODAL</option>
-					<option value="2">CLEAR</option>
-					</select>
-					
-					<label for="cmboxempresa2">Empresa</label>
-					<select name="cmboxempresa2" id="cmboxempresa2" class="form-control input-sm">
-					<option value="">Selecione o Empresa</option>
-					<option value="23">ABEV3F(AMBEV SA)</option>
-<option value="10">AZUL4F(AZUL)</option>
-<option value="1">BBAS3F(BANCO DO BRASIL)</option>
-<option value="9">BRFS3F(BRF)</option>
-<option value="4">CIEL3F(CIELO)</option>
-<option value="20">CPLE6F(COPEL)</option>
-<option value="32">CSNA3F(Companhia Siderurgica Nacional)</option>
-<option value="30">DMMO3F(DMMO)</option>
-<option value="16">ELET3F(ELETROBRAS)</option>
-<option value="6">EMBR3F(EMBRAER)</option>
-<option value="19">ESTC3F(ESTÁCIO PARCIPAÇÕES)</option>
-<option value="15">FLRY3F(FLEURY)</option>
-<option value="11">GOLL4F(GOL)</option>
-<option value="7">GRND3(GRANDENE)</option>
-<option value="13">KLBN11F(KLABIN)</option>
-<option value="3">LIGT3F(LiGHT)</option>
-<option value="31">LREN3F(Lojas Renner SA)</option>
-<option value="28">MRVE3F(MRV)</option>
-<option value="5">NATU3F(NATURA)</option>
-<option value="27">OIBR3F(OI)</option>
-<option value="8">PETR4F(PETROBRAS)</option>
-<option value="12">QUAL3F(QUALICORP)</option>
-<option value="21">RADL3F(Drogaria Raia)</option>
-<option value="22">SMLS3F(SMILE FIDELIDADE)</option>
-<option value="14">SUZB3F(SUZANO)</option>
-<option value="24">TIMP3F(TIM PARTICIPAÇÕES)</option>
-<option value="2">UGPA3F(ULTRAPAR)</option>
-<option value="25">VALE3F(VALE)</option>
-<option value="17">VVAR11F(VIA VAREJO)</option>
-<option value="29">VVAR3F(VIA VAREJO)</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="edtdatacompra">Data Compra:</label>
-					<input type="text" class="form-control input-sm" id="edtdatacompra2" name="edtdatacompra2">
-				</div>
-				<div class="form-group">
-					<label for="edtvalorcompra">Valor Compra:</label>
-					<input type="text" class="form-control input-sm" id="edtvalorcompra2" name="edtvalorcompra2">
-				</div>
-				<div class="form-group">
-					<label for="edtquantidade">Quantidade:</label>
-					<input type="text" class="form-control input-sm" id="edtquantidade2" name="edtquantidade2">
-				</div>
-				<div class="form-group">
-					<label for="edtdatavenda">Data Venda:</label>
-					<input type="text" class="form-control input-sm" id="edtdatavenda2" name="edtdatavenda2">
-				</div>
-				<div class="form-group">
-					<label for="edtvalorvenda">Valor Venda:</label>
-					<input type="text" class="form-control input-sm" id="edtvalorvenda2" name="edtvalorvenda2">
-				</div>				
-				<button type="button" class="botao btn btn-success btn-sm btn-block" onclick="alterarChamado()">Alterar dados do chamado</button>
-			</div>
-		</div>
+		
 
 		<div id="login" class="tab-pane fade">
 			<div class="container">
@@ -552,36 +345,8 @@ li.lifooter a:hover:not(.active) {
 			xmlhttp.send();
 			return resultado;  
 		}
-		
-		function abreAtedimento(atendimento)
-		{
-		   var idtipousuario = window.localStorage.getItem("idtipousuario");
-		   if (idtipousuario<'3')
-		   {
-			  //if (document.getElementById('idsituacaochamado').value=='3')
-			  //{
-			//	alert('Chamado fechado.')
-			 // }
-			  //else
-			  //{
-				document.getElementById('edtatendimento').value=atendimento;
-				$("#myModal").modal();
-			  //}
-		   }
-		   else
-		   {
-		   		navigator.notification.alert(
-									'Sem acesso a funcionalidade.',  // message
-									alertDismissed,         // callback
-									'Atenção',            // title
-									'OK'                  // buttonName
-				);
-			   //alert('Sem acesso a funcionalidade');
-		   }
-		}
-		
-		
-		function novolote()
+
+		function novoconcurso()
 		{
 			
 			var idusuario = window.localStorage.getItem("idusuario");
@@ -591,19 +356,18 @@ li.lifooter a:hover:not(.active) {
 			}
 			else
 			{
-				$('#myNavbar a[href="#novolote"]').tab('show');
+				$('#myNavbar a[href="#novoconcurso"]').tab('show');
 				//document.getElementById('edtsolicitante').value=window.localStorage.getItem('uname');
-				document.getElementById('cmboxcorretora').value='';
-				document.getElementById('cmboxempresa').value='';
-				document.getElementById('edtvalorcompra').value='';
-				document.getElementById('edtdatacompra').value='';
+				document.getElementById('edtvaloraposta').value='';
+				document.getElementById('edtdataconcurso').value='';
+				document.getElementById('edtnumeroconcurso').value='';
 				document.getElementById('edtquantidade').value='';
 				$(".botao").removeAttr("disabled");
 				var date = new Date();
 				var day = date.getDate();
-				var monthIndex = date.getMonth();
+				var month = date.getMonth();
 				var year = date.getFullYear();
-				document.getElementById("edtdatacompra").value = day + '/' + monthIndex+1 + '/' + year;
+				document.getElementById("edtdataconcurso").value = day + '/' + (month+1) + '/' + year;
 
 			}
 		
@@ -635,39 +399,19 @@ li.lifooter a:hover:not(.active) {
 		// 15 dias
 		// 30 dias
 		
-		function carregaatendimento(id,filtro,idempresa) 
+		function carregaatendimento() 
 		{
 
-		// se for passado o id de numero de chamado
-		// redireciona para a página de detalhamento do chamado
-		// caso contrário lista todos os chamados
 		    var idusuario = window.localStorage.getItem("idusuario");
-		   
 			if (idusuario == null) 
 			{
 				$('#myNavbar a[href="#login"]').tab('show');
 			}
 			else
 			{			
-		
-			   if (id==0)
-			   {
-				$('#myNavbar a[href="#consatendimentofiltro"]').tab('show');
-				//alert(filtro);
-				getChamados(idusuario,filtro,idempresa);
-			   }
-			   else
-			   {
-				 //alert(id);
-				 $('#myNavbar a[href="#conschamado"]').tab('show');
-				 document.getElementById('edtID').value=id;  
-				 preencheDadosChamado(id);
-				 //pegaImagens(id);
-			   }
+				$('#myNavbar a[href="#consextrato"]').tab('show');
+				getExtrato(idusuario);
 		   }
-		  
-		   
-		   
 		}
 		
 		function exitFromApp(){
@@ -681,102 +425,15 @@ li.lifooter a:hover:not(.active) {
 			return Array(length).join(paddingChar || '0') + value;
 		};
 
-		function alterarChamado()
-		{
-		
-			if ((document.getElementById('edtvalorcompra2').value=='') ||
-			(document.getElementById('edtdatacompra2').value=='') ||
-			(document.getElementById('edtquantidade2').value=='') ||
-			(document.getElementById('cmboxcorretora2').value=='') ||
-			(document.getElementById('cmboxempresa2').value=='') )
-			{
-			   navigator.notification.alert(
-									'Verifique o preenchimento dos campos!',  // message
-									alertDismissed,         // callback
-									'Atenção',            // title
-									'OK'                  // buttonName
-				);
-//				alert('Verifique o preenchimento dos campos!');
-				/*navigator.notification.alert(
-				'Verifique o preenchimento dos campos!',  // message
-				alertDismissed,         // callback
-				'Atenção',            // title
-				'OK'                  // buttonName
-				);
-				*/
-			}
-			else
-			{
-				var codusuario = window.localStorage.getItem("idusuario");
 
-				var idlote = document.getElementById('edtID').value;
-				var quantidade = document.getElementById('edtquantidade2').value;
-				var valor = document.getElementById('edtvalorcompra2').value;
-				var datacompra = document.getElementById('edtdatacompra2').value;
-				var idempresa = document.getElementById('cmboxempresa2').value;
-				var idcorretora = document.getElementById('cmboxcorretora2').value;
-				var datavenda = document.getElementById('edtdatavenda2').value;
-				var valorvenda = document.getElementById('edtvalorvenda2').value;
-				
-				var params = "op=A&id="+idlote+"&edtdatavenda="+datavenda+"&edtvalorvenda="+valorvenda+"&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&cmboxempresa="+idempresa+"&cmboxcorretora="+idcorretora+"&codusuario="+codusuario;
-                var resultado = 0;
-                var xmlhttp = new XMLHttpRequest();
-        		
-                xmlhttp.open("GET","http://tempustecnologia.com/acoes/exec.lote.php?"+params,false);
 		
-                xmlhttp.onload = function (){
-					alert(xmlhttp.status);
-                    if (xmlhttp.status==200)
-                        {
-							resultado = xmlhttp.responseText;
-							alert(resultado);
-							if (resultado==true)
-							{	
-								navigator.notification.alert(
-									'Alterado com sucesso',  // message
-									alertDismissed,         // callback
-									'Atenção',            // title
-									'OK'                  // buttonName
-								);
-							    // alert('Alterado com sucesso');
-							}
-							/*else
-							{
-							navigator.notification.alert(
-									'Não foi possível alterar o lote!',  // message
-									alertDismissed,         // callback
-									'Atenção',            // title
-									'OK'                  // buttonName
-								);
-								//alert('Não foi possível alterar o chamado');
-							
-								carregaatendimento(0,0,0);
-							}
-							*/
-							carregaatendimento(0,0,0);
-                        }
-                    else if (xmlhttp.status == 404) {
-                        alert("Web Service doesn't work");
-                        
-                    }
-                    else
-                        {
-                            alert("Unknown erro occurred while trying insert data");
-                        }
-                };
-                xmlhttp.send();
-				
-        }
-     }		 
-		 
-		
-		function salvarLote()
+		function salvarconcurso()
 		{
-			if ((document.getElementById('edtvalorcompra').value=='') ||
-			(document.getElementById('edtdatacompra').value=='') ||
-			(document.getElementById('edtquantidade').value=='') ||
-			(document.getElementById('cmboxcorretora').value=='') ||
-			(document.getElementById('cmboxempresa').value=='') )
+			if ((document.getElementById('edtvaloraposta').value=='') ||
+			(document.getElementById('edtdataconcurso').value=='') ||
+			(document.getElementById('edtnumeroconcurso').value=='') ||
+			(document.getElementById('edtquantidade').value=='')
+			)
 			{
 				navigator.notification.alert(
 									'Verifique o preenchimento dos campos.',  // message
@@ -800,12 +457,10 @@ li.lifooter a:hover:not(.active) {
 				var codusuario = window.localStorage.getItem("idusuario");
 
 				var quantidade = document.getElementById('edtquantidade').value;
-				var valor = document.getElementById('edtvalorcompra').value;
-				var datacompra = document.getElementById('edtdatacompra').value;
-				var idempresa = document.getElementById('cmboxempresa').value;
-				var idcorretora = document.getElementById('cmboxcorretora').value;
+				var valor = document.getElementById('edtvaloraposta').value;
+				var datacompra = document.getElementById('edtdataconcurso').value;
 
-				var params = "op=I&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&cmboxempresa="+idempresa+"&cmboxcorretora="+idcorretora+"&codusuario="+codusuario;
+				var params = "op=I&edtquantidade="+quantidade+"&edtvalorcompra="+valor+"&edtdatacompra="+datacompra+"&codusuario="+codusuario;
                 //alert(params);
 				var resultado = 0;
                 var xmlhttp = new XMLHttpRequest();
@@ -815,9 +470,7 @@ li.lifooter a:hover:not(.active) {
                     if (xmlhttp.status==200)
                         {
         					resultado = xmlhttp.responseText;
-							//alert(resultado);
-							//novolote();
-							carregaatendimento(0,0,0);
+							carregaatendimento();
                         }
                     else if (xmlhttp.status == 404) {
                         alert("Web Service doesn't work");
@@ -852,8 +505,8 @@ li.lifooter a:hover:not(.active) {
 					//alert(this.responseText);
 					var myObj = JSON.parse(this.responseText);
 					
-					document.getElementById("cmboxcorretora2").value= myObj.idcorretora;
-					document.getElementById("cmboxempresa2").value= myObj.idempresa;
+//					document.getElementById("cmboxcorretora2").value= myObj.idcorretora;
+//					document.getElementById("cmboxempresa2").value= myObj.idempresa;
 					var str = myObj.datacompra; 
 					   var ano = str.substr(0, 4);
 					   var mes = str.substr(5, 2);
@@ -928,17 +581,17 @@ li.lifooter a:hover:not(.active) {
 								
 		}
 	 
-		function getChamados(id,filtro,idempresa)
+		function getExtrato(id)
 		{
-         var params = "idempresa="+idempresa+"&idusuario="+id+"&filtro="+filtro;
+         var params = "idusuario="+id;
                 var resultado = 0;
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET","http://tempustecnologia.com/acoes/getlote.php?"+params,true);
+                xmlhttp.open("GET","http://tempustecnologia.com/acoes/getextrato.php?"+params,true);
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200)
                         {
 						    var str = xmlhttp.responseText;
-							document.getElementById("chamadosfiltro").innerHTML=str;
+							document.getElementById("divextrato").innerHTML=str;
 							/*alert(id);
 							if (id==0)
 							{
@@ -996,7 +649,7 @@ li.lifooter a:hover:not(.active) {
             var resultado = 0;
             var xmlhttp = new XMLHttpRequest();
 				
-                xmlhttp.open("GET","http://tempustecnologia.com/acoes/getresumo.php?"+params,true);
+                xmlhttp.open("GET","http://tempustecnologia.com/acoes/getresumoconta.php?"+params,true);
                 xmlhttp.onload = function (){
                     if (xmlhttp.status==200)
                         {
@@ -1014,37 +667,6 @@ li.lifooter a:hover:not(.active) {
                 xmlhttp.send();
 				return resultado;   
 	   }
-		
-		function excluirChamado(idchamado)
-		{
-			//alert(idchamado);
-			var params = "op=E&id="+idchamado;
-                var resultado = 0;
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET","http://tempustecnologia.com/acoes/exec.chamado.php?"+params,false);
-		
-                xmlhttp.onload = function (){
-				//alert(xmlhttp.status);
-                    if (xmlhttp.status==200)
-                        {
-        					resultado = xmlhttp.responseText;
-							//alert(resultado);
-							carregaatendimento(0,0,'');
-							//carregaatendimento(resultado,0);
-                        }
-                    else if (xmlhttp.status == 404) {
-                        alert("Web Service doesn't work");
-                        
-                    }
-                    else
-                        {
-                            alert("Unknown erro occurred while trying insert data");
-                        }
-                };
-				xmlhttp.send();
-				return resultado;  
-		
-		}
 		
 		function alertDismissed() {
 
